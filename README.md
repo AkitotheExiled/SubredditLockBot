@@ -14,7 +14,7 @@ SUBREDDIT=yoursubreddit
 
 #### DAY
 The days are as follows,
-
+```
 1 = Monday
 2 = Tuesday
 3 = Wednesday
@@ -22,6 +22,6 @@ The days are as follows,
 5 = Friday
 6 = Saturday
 7 = Sunday
-
+```
 ##### Setting up automoderator in conjuction for this script
 https://www.reddup.co/r/AutoModerator/comments/1z7rlu/now_available_for_testing_wikiconfigurable
