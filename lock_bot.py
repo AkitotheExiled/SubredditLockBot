@@ -2,6 +2,7 @@ import praw
 from configparser import ConfigParser
 from datetime import date
 import requests, requests.auth
+import json
 
 
 class Lock_Bot():
@@ -25,6 +26,11 @@ class Lock_Bot():
                              password=self.password,
                              user_agent=self.user_agent,
                              username=self.user)
+        self.parse = requests.get('https://www.hebcal.com/hebcal/?v=1&cfg=json&maj=on&min=on&mod=on&nx=on&year=now&month=x&ss=on&mf=on&c=off&geo=none&m=50&s=on').json()
+        self.holidays = []
+        for item in self.parse['items']:
+            self.holidays.append(item['date'])
+
 
     def get_token(self):
         client_auth = requests.auth.HTTPBasicAuth(self.client, self.secret)
@@ -37,7 +43,7 @@ class Lock_Bot():
 
     def check_date(self):
         today = date.today()
-        if today.isoweekday() == self.day:
+        if today.isoweekday() == self.day or today.isoformat() in self.holidays:
             return True
         else:
             return False
