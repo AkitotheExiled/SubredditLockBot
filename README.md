@@ -1,6 +1,12 @@
 # SubredditLockBot
 A bot that locks your subreddit on a specific day and preventing posting and comments.
 
+
+## Installing required packages
+```
+pip install -r requirements.txt
+```
+
 ### config.ini
 ```
 [main]
