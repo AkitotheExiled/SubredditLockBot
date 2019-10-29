@@ -44,18 +44,20 @@ class Lock_Bot():
     def check_date(self):
         today = date.today()
         if today.isoweekday() == self.day or today.isoformat() in self.holidays:
-            return True
-        else:
             return False
+        else:
+            return True
 
     def lock_subreddit(self):
         if self.reddit.subreddit(self.subreddit).mod.settings()['subreddit_type'] == 'public':
+            print('Your subreddit is now locked.')
             return self.reddit.subreddit(self.subreddit).mod.update(subreddit_type='restricted', spam_comments='all')
         elif self.reddit.subreddit(self.subreddit).mod.settings()['subreddit_type'] == 'restricted':
             return print('Your subreddit:', self.subreddit, 'is already restricted.')
 
     def unlock_subreddit(self):
         if self.reddit.subreddit(self.subreddit).mod.settings()['subreddit_type'] == 'restricted':
+            print('Your subreddit is now unlocked.')
             return self.reddit.subreddit(self.subreddit).mod.update(subreddit_type='public', spam_comments='low')
         elif self.reddit.subreddit(self.subreddit).mod.settings()['subreddit_type'] == 'public':
             return print('Your subreddit:', self.subreddit, 'is already public.')
@@ -66,4 +68,5 @@ if __name__ == '__main__':
         bot.unlock_subreddit()
     else:
         bot.lock_subreddit()
+
 
