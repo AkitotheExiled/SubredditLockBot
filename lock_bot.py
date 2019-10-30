@@ -2,8 +2,6 @@ import praw
 from configparser import ConfigParser
 from datetime import date, datetime
 import requests, requests.auth
-from apscheduler.schedulers.background import BackgroundScheduler
-import logging
 
 class Lock_Bot():
 
@@ -99,14 +97,7 @@ class Lock_Bot():
 
 if __name__ == '__main__':
     bot = Lock_Bot()
-    if bot.debug:
-        logging.basicConfig()
-        logging.getLogger('apscheduler').setLevel(logging.DEBUG)
-    sched = BackgroundScheduler()
-    sched.add_job(bot.run_bot,'cron',hour='0,12')
-    sched.start()
-    input('The bot is running in the background and will run every dat at 12:00am. Press enter to exit.')
-    sched.shutdown()
+    bot.run_bot()
 
 
 
