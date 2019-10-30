@@ -103,9 +103,9 @@ if __name__ == '__main__':
         logging.basicConfig()
         logging.getLogger('apscheduler').setLevel(logging.DEBUG)
     sched = BackgroundScheduler()
-    sched.add_job(bot.run_bot,'cron',hour='0,12')
+    sched.add_job(bot.run_bot, 'cron', hour='0,12')
     sched.start()
-    input('The bot is running in the background and will run every dat at 12:00am. Press enter to exit.')
+    input('The bot is running in the background and will run every day at 12:00am and 12:00pm. Press enter to exit.')
     sched.shutdown()
 
 
