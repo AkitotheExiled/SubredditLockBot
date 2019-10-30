@@ -16,6 +16,7 @@ CLIENT_ID= yourclientid
 SECRET= yoursecret
 DAY=6
 SUBREDDIT=yoursubreddit
+DEBUG=False
 ```
 
 #### DAY
